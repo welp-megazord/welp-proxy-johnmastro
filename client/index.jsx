@@ -18,5 +18,5 @@ class App extends React.Component {
   }
 }
 
-ReactDom.render(<App />, document.getElementById('Header'));
-// ReactDom.render(<App />, document.getElementById('root'));
+// ReactDom.render(<App />, document.getElementById('Header'));
+// ReactDom.render(<App />, document.getElementById('sidebar'));

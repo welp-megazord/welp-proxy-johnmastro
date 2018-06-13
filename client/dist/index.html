@@ -7,17 +7,28 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <title>Document</title>
 </head>
-<body>
+<body style="margin: 0;">
+  <div>
 
-  <div id="Header"> 
-    <script src="http://localhost:3000/bundle.js"> </script>
+    <div id="Header" style = "display:inline-block"> 
+      <script src="https://s3-us-west-1.amazonaws.com/photo-header/Bundle/bundle.js"> </script>
+    </div>
+    
+    <div style = "width: 960px; height: 443px; margin: 0 233px;">
+
+      <div id="sidebar" style = "float:right; padding: 3px"> 
+        <script src="http://localhost:3002/bundle.js"> </script>
+      </div>
+
+      <div id="questions" style = "float: left; padding: 20px 0; width: 640px;">
+        <script src="http://localhost:3001/bundle.js"> </script>
+      </div>
+    </div>
+    
+    
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
   </div>
-
-  <!-- <div id="root"> 
-    <script src="http://localhost:4000/bundle.js"> </script>
-  </div> -->
-  
-  <link rel="stylesheet" type="text/css" href="style.css" />
 
 </body>
 </html>
