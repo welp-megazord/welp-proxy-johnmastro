@@ -2,9 +2,9 @@
   "name": "welp-proxy-johnmastro",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node ./server/index.js"
+    "start": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +20,12 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "jquery": "^3.3.1",
-    "nodemon": "^1.17.5",
+    "node-fetch": "^2.1.2",
     "path": "^0.12.7",
-    "styled-components": "^3.3.0"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }

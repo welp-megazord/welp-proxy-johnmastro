@@ -1,3 +1,28 @@
+body {
+  margin: 0;
+}
+
+.container {
+  width: 960px;
+  height: 443px;
+  margin: 0 233px;
+}
+
+#Header {
+  display: inline-block;
+}
+
+#sidebar {
+  float: right;
+  padding-top: 20px;
+}
+
+#questions {
+  float: left;
+  padding: 20px 0;
+  width: 640px;
+}
+
 #beefore {
   color: white;
   margin: 0 6px;

@@ -1,1 +1,4 @@
 node_modules
+/client/dist/lib
+/client/dist/services
+/templates/services

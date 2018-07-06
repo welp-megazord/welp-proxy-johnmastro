@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+static_dir=./client/dist
+static_lib="${static_dir}/lib"
+node_modules=./node_modules
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: build TAG"
+    exit 1
+else
+    tag="$1"
+fi
+
+mkdir -p $static_lib
+
+if [[ -d "${node_modules}/react/cjs" ]]; then
+    cp -f "${node_modules}/react/cjs/react.development.js" $static_lib
+    cp -f "${node_modules}/react/cjs/react.production.min.js" $static_lib
+else
+    echo "React not found"
+    exit 1
+fi
+
+if [[ -d "${node_modules}/react-dom/cjs" ]]; then
+   cp -f "${node_modules}/react-dom/cjs/react-dom.development.js" $static_lib
+   cp -f "${node_modules}/react-dom/cjs/react-dom.production.min.js" $static_lib
+else
+    echo "ReactDOM not found"
+    exit 1
+fi
+
+# docker build -t $tag .
+
+# vi:syntax=sh
