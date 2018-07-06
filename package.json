@@ -1,5 +1,5 @@
 {
-  "name": "yelp_frontend_capstone",
+  "name": "welp-proxy-johnmastro",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kmtun/whelp-proxy.git"
+    "url": "git+https://github.com/welp-megazord/welp-proxy-johnmastro.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kmtun/whelp-proxy/issues"
+    "url": "https://github.com/welp-megazord/welp-proxy-johnmastro/issues"
   },
-  "homepage": "https://github.com/kmtun/whelp-proxy#readme",
+  "homepage": "https://github.com/welp-megazord/welp-proxy-johnmastro#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
