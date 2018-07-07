@@ -2,6 +2,9 @@ const path = require('path');
 const express = require('express');
 const parser = require('body-parser');
 const fetch = require('node-fetch');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const PORT = process.env.PORT || 2000;
 
@@ -62,8 +65,8 @@ app.get('/index.html', renderSSR);
 
 app.listen(PORT, (err) => {
   if (err) {
-    console.log('Error connecting to server: ', err);
+    console.error('Error starting server:', err);
   } else {
-    console.log('Successfully connected to server on port: ', PORT);
+    console.log('Listening on port', PORT);
   }
 });
