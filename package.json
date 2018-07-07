@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/welp-megazord/welp-proxy-johnmastro#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "node-fetch": "^2.1.2",
