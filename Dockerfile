@@ -1,20 +1,7 @@
-FROM node:carbon
-
-# Create app directory
-WORKDIR /
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
+FROM node:10-alpine
+WORKDIR /app
+ADD . /app
 RUN npm install
-# If you are building your code for production
-# RUN npm install --only=production
-
-# Bundle app source
-COPY . .
-
 EXPOSE 2000
-
-CMD [ "node", "./server/index.js" ]
+ENV PORT 2000
+CMD ["node", "server.js"]
