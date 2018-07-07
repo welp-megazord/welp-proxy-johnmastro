@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  app:
+    image: johnmastro/welp-proxy:latest
+    environment:
+      PORT: 2000
+    ports:
+      - "2000:2000"
