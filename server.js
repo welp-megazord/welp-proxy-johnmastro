@@ -50,7 +50,7 @@ const renderComponents = (components, props = {}) => {
 };
 
 const renderSSR = (_req, res) => {
-  const props = {};
+  const props = { apiHost: `http://localhost:${PORT}` };
   const components = renderComponents(services, props);
   res.end(Layout(
     'Welp',
