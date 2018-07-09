@@ -1,3 +1,9 @@
 {
-    "Header": "http://18.144.16.254:8080/app"
+    "Header": {
+        "server": "http://18.144.16.254:8080",
+        "bundle": "/app",
+        "routes": [
+            "/api/header/restaurant"
+        ]
+    }
 }

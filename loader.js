@@ -34,7 +34,8 @@ const fetchBundles = (path, services, suffix = '', load = false) => {
     fs.access(file, (err) => {
       if (err) {
         if (err.code === 'ENOENT') {
-          const url = `${services[item]}${suffix}.js`;
+          const { server, bundle } = services[item];
+          const url = `${server}/${bundle}${suffix}.js`;
           download(url, file)
             .then(() => {
               if (load) {

@@ -13,7 +13,6 @@ const app = express();
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
-// Static
 app.use(express.static(path.join(__dirname, './client/dist')));
 
 const clientBundles = './client/dist/services';
@@ -28,21 +27,21 @@ const Layout = require('./templates/layout');
 const App = require('./templates/app');
 const Scripts = require('./templates/scripts');
 
-// Proxy to the header component
-app.get('/api/header/restaurant/:id', (req, res) => {
-  const { id } = req.params;
-  const url = `http://localhost:3000/api/header/restaurant/${id}`;
-  fetch(url)
-    .then(proxied => {
-      proxied.body.pipe(res);
-    })
-    .catch(err => {
-      console.error(`Error getting ${url}:`, err);
-      res.status(500).send('Internal server error');
+Object.values(serviceConfig).forEach(service => {
+  service.routes.forEach(route => {
+    app.use(route, (req, res) => {
+      const target = service.server + req.originalUrl;
+      console.log('Proxy', req.originalUrl, '=>', target);
+      fetch(target)
+        .then(proxied => { proxied.body.pipe(res); })
+        .catch(err => {
+          console.error(`Error getting ${target}:`, err);
+          res.status(500).send('Internal server error');
+        });
     });
+  });
 });
 
-// See https://medium.com/styled-components/the-simple-guide-to-server-side-rendering-react-with-styled-components-d31c6b2b8fbf
 const renderComponents = (components, props = {}) => {
   return Object.keys(components).map(item => {
     const component = React.createElement(components[item], props);
@@ -50,7 +49,7 @@ const renderComponents = (components, props = {}) => {
   });
 };
 
-const renderSSR = (req, res) => {
+const renderSSR = (_req, res) => {
   const props = {};
   const components = renderComponents(services, props);
   res.end(Layout(
