@@ -15,11 +15,19 @@ app.use(parser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, './client/dist')));
 
-const clientBundles = './client/dist/services';
-const serverBundles = './templates/services';
 const serviceConfig = require('./services.json');
-const loader = require('./loader');
-const services = loader(clientBundles, serverBundles, serviceConfig);
+
+const loadServices = (path, services) => {
+  const result = {};
+  Object.keys(services).forEach(item => {
+    const file = `${path}/${item}-server.js`;
+    console.log('Load service:', file);
+    result[item] = require(file).default;
+  });
+  return result;
+};
+
+const services = loadServices('./templates/services', serviceConfig);
 
 const React = require('react');
 const ReactDOM = require('react-dom/server');
@@ -29,14 +37,14 @@ const Scripts = require('./templates/scripts');
 
 Object.values(serviceConfig).forEach(service => {
   service.routes.forEach(route => {
-    app.use(route, (req, res) => {
+    app.use(route, (req, res0) => {
       const target = service.server + req.originalUrl;
       console.log('Proxy', req.originalUrl, '=>', target);
       fetch(target)
-        .then(proxied => { proxied.body.pipe(res); })
+        .then(res1 => { res1.body.pipe(res0); })
         .catch(err => {
           console.error(`Error getting ${target}:`, err);
-          res.status(500).send('Internal server error');
+          res0.status(500).send('Internal server error');
         });
     });
   });
