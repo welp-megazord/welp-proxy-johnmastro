@@ -3,6 +3,10 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 
+const clientPath = './client/dist/services';
+const serverPath = './templates/services';
+const serviceConfig = './services.json';
+
 const fetchBundles = (path, services, suffix = '') => {
   Object.keys(services).forEach(item => {
     const { server, bundle } = services[item];
@@ -36,9 +40,7 @@ const run = (clientPath, serverPath, services) => {
 };
 
 if (require.main === module) {
-  const clientPath = './client/dist/services';
-  const serverPath = './templates/services';
-  const services = require('./services.json');
+  const services = require(serviceConfig);
   run(clientPath, serverPath, services);
 }
 

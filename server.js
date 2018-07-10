@@ -51,10 +51,12 @@ Object.values(serviceConfig).forEach(service => {
 });
 
 const renderComponents = (components, props = {}) => {
-  return Object.keys(components).map(item => {
+  const result = {};
+  Object.keys(components).forEach(item => {
     const component = React.createElement(components[item], props);
-    return ReactDOM.renderToString(component);
+    result[item] = ReactDOM.renderToString(component);
   });
+  return result;
 };
 
 const renderSSR = (_req, res) => {
@@ -62,7 +64,7 @@ const renderSSR = (_req, res) => {
   const components = renderComponents(services, props);
   res.end(Layout(
     'Welp',
-    App(...components),
+    App(components['Header'], '', '', components['Reviews']),
     Scripts(Object.keys(services))
   ));
 };

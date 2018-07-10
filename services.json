@@ -5,5 +5,15 @@
         "routes": [
             "/api/header/restaurant"
         ]
+    },
+    "Reviews": {
+        "server": "http://13.57.187.117:8080",
+        "bundle": "/app",
+        "routes": [
+            "/api/restaurants",
+            "/api/reviews",
+            "/api/users",
+            "/api/photos"
+        ]
     }
 }

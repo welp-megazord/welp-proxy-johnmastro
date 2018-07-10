@@ -4,3 +4,4 @@ bower_components
 /client/dist/services
 /templates/services
 .env
+loaderio*.txt
