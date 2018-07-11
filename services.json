@@ -15,5 +15,13 @@
             "/api/users",
             "/api/photos"
         ]
+    },
+    "Questions": {
+        "server": "http://34.220.99.245:3000",
+        "bundle": "/app",
+        "routes": [
+            "/api/questions",
+            "/api/getAnswers"
+        ]
     }
 }

@@ -64,7 +64,7 @@ const renderSSR = (_req, res) => {
   const components = renderComponents(services, props);
   res.end(Layout(
     'Welp',
-    App(components['Header'], '', '', components['Reviews']),
+    App(components.Header, '', components.Questions, components.Reviews),
     Scripts(Object.keys(services))
   ));
 };
