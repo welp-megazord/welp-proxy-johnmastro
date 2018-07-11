@@ -1,8 +1,8 @@
-module.exports = (header, sidebar, questions, reviews) => `
-  <div id="header">${header}</div>
+module.exports = ({ Header, Sidebar, Questions, Reviews }) => `
+  <div id="header">${Header}</div>
   <div class="container">
-    <!-- <div id="sidebar">${sidebar}</div> -->
-    <div id="questions">${questions}</div>
-    <div id="reviews">${reviews}</div>
+    <!-- <div id="sidebar">${Sidebar}</div> -->
+    <div id="questions">${Questions}</div>
+    <div id="reviews">${Reviews}</div>
   </div>
 `;
